@@ -1,0 +1,111 @@
+<section class="settings py-5">
+    <div class="container mt-5">
+    <div class="row py-5">
+        <div class="col-lg-10 mx-auto">
+            <div class="card bg-light shadow">
+                <h3 class="card-header text-center">General Quiz</h3>
+                  <div class="card-body">
+                    <div *ngIf="currentQuiz < 10 ">
+                        <p class="float-right"><small>points: </small>{{points}}</p>
+                      <p class="text-center">{{currentQuiz +1}} of {{quizz.length}}</p>
+                      <p class="card-text">{{quizz[ramdomize].question}}</p>
+                          <ul class="list-group" *ngFor="let quiz of quizz[ramdomize].answer">
+                              <label>
+                              <li class="list-group-item" appBackground [correctAnswer]="quiz.correct">
+                                  <input type="radio" name="options"  (change)="onAnswer(quiz.correct)" [disable]="answerSelected">
+                                  &nbsp;{{quiz.option}}</li>
+                                </label>
+                            </ul>
+                            </div>
+                            <div *ngIf="currentQuiz > 9">
+                                <button class="btn btn-success btn-block" (click)="showResult()">show results</button>
+                                <div *ngIf="result">
+
+                                    <div class="py-3">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Correct Answers</th>
+                                                    <th scope="col">Incorrect Answers</th>
+                                                    <th scope="col">Points</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{correctAnswer}}</td>
+                                                    <td>{{inCorrectAnswer}}</td>
+                                                    <td>{{points}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                 
+                                    <div>
+                                        <h3 class="text-center">Leader-board</h3>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Participate</th>
+                                                    <th scope="col">Points</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Mark</td>
+                                                    <td>30</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>jacob</td>
+                                                    <td>29</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>larry</td>
+                                                    <td>28</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">4</th>
+                                                    <td>Otto</td>
+                                                    <td>25</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>Thornton</td>
+                                                    <td>23</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">6</th>
+                                                    <td>John</td>
+                                                    <td>20</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">7</th>
+                                                    <td>Roger</td>
+                                                    <td>19</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">8</th>
+                                                    <td>Loner</td>
+                                                    <td>12</td>
+                                                </tr>    <tr>
+                                                    <th scope="row">9</th>
+                                                    <td>Your Points</td>
+                                                    <td>10</td>
+                                                </tr>    <tr>
+                                                    <th scope="row">10</th>
+                                                    <td>Your Points</td>
+                                                    <td>{{points}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <a (click)="restartQuiz()" class="btn btn-outline-dark float-right">quiz</a>
+                                </div>
+                            </div>
+                  </div>
+            </div>
+        </div>
+    </div>
